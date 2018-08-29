@@ -1,0 +1,117 @@
+br
+//- this is a block comment
+  m-12.table-responsive
+   table.table.table-bordered.table-hover.table-striped
+     thead.thead-default
+       tr
+         th Image
+         th Address
+         th City
+         th State
+         th Zip Code
+         th Bedroom
+         th Bathroom
+         th Price
+         th 
+     tbody
+       each item in listinglist
+         tr
+           td
+             img(src= 'data:image/png;base64,'+ Buffer.from(item.Thumbnail).toString('base64'))
+           td(style='vertical-align:middle')= item.AddressLine
+           td(style='vertical-align:middle')= item.City
+           td(style='vertical-align:middle')= item.State
+           td(style='vertical-align:middle')= item.ZipCode
+           td(style='vertical-align:middle')= item.Bedroom
+           td(style='vertical-align:middle')= item.Bathroom
+           td(style='vertical-align:middle')= item.Price
+           td(style='vertical-align:middle') t
+             a(href='https://sfsuse.com/fa17g14/property/'+item.idListings, class='btn btn-primary bth-md') View Full Image
+// block comment ends here
+#demo.container.text-center
+  // panel
+  .row
+    .jplist-panel
+      // jplist bootstrap sort dropdown control
+      .dropdown.col-sm-5.col-xs-5(data-control-type='boot-sort-drop-down', data-control-name='bootstrap-sort-dropdown-demo', data-control-action='sort', data-datetime-format='{month}/{day}/{year}')
+        // {year}, {month}, {day}, {hour}, {min}, {sec}
+        button#sort-by-dropdown-btn.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+          span(data-type='selected-price') Sort by Price
+          span.caret
+        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu1')
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.price', data-order='asc', data-type='number', data-default='true') Low-High
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.price', data-order='desc', data-type='number') High-Low
+
+    .jplist-panel
+      // jplist bootstrap sort dropdown control
+      .dropdown.col-sm-5.col-xs-5(data-control-type='boot-sort-drop-down', data-control-name='bootstrap-sort-dropdown-demo', data-control-action='sort', data-datetime-format='{month}/{day}/{year}')
+        // {year}, {month}, {day}, {hour}, {min}, {sec}
+        button#sort-by-dropdown-btn.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+          span(data-type='selected-bedroom') Sort by Bedroom
+          span.caret
+        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu2')
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.bedroom', data-order='asc', data-type='number', data-default='true') Low-High
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.bedroom', data-order='desc', data-type='number') High-Low
+    
+    .jplist-panel
+      // jplist bootstrap sort dropdown control
+      .dropdown.col-sm-1.col-xs-1(data-control-type='boot-sort-drop-down', data-control-name='bootstrap-sort-dropdown-demo', data-control-action='sort', data-datetime-format='{month}/{day}/{year}')
+        // {year}, {month}, {day}, {hour}, {min}, {sec}
+        button#sort-by-dropdown-btn.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+          span(data-type='selected-bathroom') Sort by Bathroom
+          span.caret
+        ul.dropdown-menu(role='menu', aria-labelledby='dropdownMenu3')
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.bathroom', data-order='asc', data-type='number', data-default='true') Low-High
+          li(role='presentation')
+            a(role='menuitem', tabindex='-1', href='#!', data-path='.bathroom', data-order='desc', data-type='number') High-Low
+    
+
+  if(listinglist.length)
+    br
+    div(style='text-align: center')
+      p= "Showing " + listinglist.length + " results"
+ 
+    // HTML data
+    .card-columns
+      .list
+        each item in listinglist
+          .list-item
+            .card
+              a(href='https://sfsuse.com/fa17g14/property/' + item.idListings)
+                img.card-img-top(src= 'data:image/png;base64,'+ Buffer.from(item.Thumbnail).toString('base64'), alt='Property/Listing image')
+              .card-block
+                h4.card-title
+                  i.fa.fa-home
+                    span= item.AddressLine + ", " + item.City + ", " + item.State + " " + item.ZipCode
+                i.fa.fa-money(aria-hidden='true')
+                  span.price= "Price: " + item.Price 
+                  span.bedroom= " | Beds: " + item.Bedroom
+                  span.bathroom= " | Baths: " + item.Bathroom
+
+  else
+    br
+    div(style='text-align: center')
+      p= "No result was found however, check out some of our listings!"
+
+    // HTML data
+    .card-columns
+      .list
+        each item in altlistinglist
+          .list-item
+            .card
+              a(href='https://sfsuse.com/fa17g14/property/' + item.idListings)
+                img.card-img-top(src= 'data:image/png;base64,'+ Buffer.from(item.Thumbnail).toString('base64'), alt='Property/Listing image')
+              .card-block
+                h4.card-title
+                  i.fa.fa-home
+                    span= item.AddressLine + ", " + item.City + ", " + item.State + " " + item.ZipCode
+                i.fa.fa-money(aria-hidden='true')
+                  span.price= "Price: " + item.Price 
+                  span.bedroom= " | Beds: " + item.Bedroom
+                  span.bathroom= " | Baths: " + item.Bathroom
+

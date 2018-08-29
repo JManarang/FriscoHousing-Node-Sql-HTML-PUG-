@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  include search
+  br
+  each item in realtorinfo
+    h3= "Realtor Information"
+    p= "Contact " + item.FirstName + " " + item.LastName
+    form.form-inline(name="add-estimation", method="post")
+      if(messageConfirmation)
+        .alert.alert-success(role='alert')
+          p= messageConfirmation
+      div.input.form-group
+          label(for='messageToRealtor')
+          textarea.form-control(name='messageToRealtor', cols='40', rows='5')
+      div.actions
+          input(type='submit', value='Send')

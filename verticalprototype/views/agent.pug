@@ -1,0 +1,77 @@
+extends layout
+
+block content
+  br
+  #registerDisplay.container
+    .row
+      .box
+        .col-lg-8.col-md-3.col-sm-2
+          h3 Seller Dashboard
+        .col-lg-4.col-md-6.col-sm-1
+          a.btn.btn-primary(href='/listings', role='button')
+            | View 
+            i.fa.fa-plus-circle(aria-hidden='true')
+          a.btn.btn-danger(href='/listings', role='button') Delete 
+        .row
+          .col.tabs
+            ul#myTab.nav.nav-tabs(role='tablist')
+              li.nav-item
+                a#listings-tab.nav-link(data-toggle='tab', href='#listings', role='tab', aria-controls='listings', aria-selected='true') Listings
+              li.nav-item
+                a#contacts-tab.nav-link(data-toggle='tab', href='#contacts', role='tab', aria-controls='contacts', aria-selected='false') Messages
+        #nav-tabContent.row.tab-content
+          #listings.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='nav-listings-tab')
+            table#agentDashboardListings.table.table-hover
+              thead
+                tr
+                  th(scope='col') Listing IDs
+                  th(scope='col') Address
+                  th(scope='col') City
+                  th(scope='col') State
+                  th(scope='col') Zip Code
+                  th(scope='col') Date posted
+              tbody
+                if(listinglist.length)
+                  each item in listinglist
+                    tr
+                      td= item.idListings
+                      td= item.AddressLine
+                      td= item.City
+                      td= item.State
+                      td= item.ZipCode
+                      td= item.DateAdded
+                else
+                  tr
+                    td N/A
+                    td N/A
+                    td N/A
+                    td N/A
+                    td N/A
+                    td N/A
+          #contacts.tab-pane.fade(role='tabpanel', aria-labelledby='nav-contacts-tab')
+            table#agentDashboardMessages.table.table-hover
+              thead
+                tr
+                  th(scope='col') Listing IDs
+                  th(scope='col') Email
+                  th(scope='col') Message
+                  th(scope='col') Date Received
+              tbody
+                if(messagelist.length)
+                  each item in messagelist
+                    tr
+                      td= item.ListingId
+                      td= item.Email
+                      td= item.message
+                      td= item.DateReceived
+                else
+                  tr
+                    td N/A
+                    td N/A
+                    td N/A
+                    td N/A
+          // END Contact Content Tab
+        .col-lg-4.col-md-1.col-sm-1
+          a.btn.btn-success(href='https://sfsuse.com/fa17g14/sell', role='button')
+            | Create a Listing 
+            i.fa.fa-plus-circle(aria-hidden='true')

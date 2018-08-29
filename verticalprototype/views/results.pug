@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  include search 
+  if listinglist.length
+    // Populate the table with the listings information
+    include listingtable 
+  else
+    include listingtable

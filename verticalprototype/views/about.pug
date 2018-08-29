@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  
+  include search
+  div(style='padding:80px;')
+    .container
+      // Introduction Row
+      h1.my-4
+        | About Us
+      p
+        | Welcome to Frisco Housing.This website is a mockup website created for our college project.
+      // Team Members Row
+      .row
+        .col-lg-12
+          h2.my-4 Our Team
+        .col-lg-4.col-sm-9.text-center.mb-4
+          img.rounded-circle.img-fluid.d-block.mx-auto(src='https://media-exp1.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAw3AAAAJGUyMWI3ZWMzLWI4MjktNGJhZS1iZTcyLWIwNzQzMWVlNjI5Nw.jpg', alt='Image', width='200', height='200')
+          h3
+            | John Lazzarini
+            p
+            small Team Lead
+          p Passionate software developer, professional services consultant, and presenter.
+        .col-lg-4.col-sm-6.text-center.mb-4
+          img.rounded-circle.img-fluid.d-block.mx-auto(src='http://placehold.it/200x200', alt='Image')
+          h3
+            | Eric Gumba
+            p
+            small Front end person
+          p Student at SFSU, enjoys going on Quora.
+        .col-lg-4.col-sm-6.text-center.mb-4
+          img.rounded-circle.img-fluid.d-block.mx-auto(src='http://placehold.it/200x200', alt='Image')
+          h3
+            | Jonah Manarang
+            p
+            small Back End
+          p I'm a senior at SFSU who enjoys basketball, board games, and video games.
+        .col-lg-4.col-sm-6.text-center.mb-4
+          img.rounded-circle.img-fluid.d-block.mx-auto(src='http://placehold.it/200x200', alt='Image')
+          h3
+            | Prakash Gurung
+            p
+            small Front End
+          p I like playing soccer and music. 
+        .col-lg-4.col-sm-6.text-center.mb-4
+          img.rounded-circle.img-fluid.d-block.mx-auto(src='http://placehold.it/200x200', alt='Image')
+          h3
+            | Ivan Villamar
+            p
+            small Back End
+          p Undergraduate student at SFSU, fond of cats and reading web novels.

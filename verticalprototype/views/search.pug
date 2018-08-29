@@ -1,0 +1,29 @@
+#frontDisplay.jumbotron
+  hr.m-y-2
+  h1.display-3 Welcome to Frisco Housing !
+  p.lead Ready to buy your dream house ?
+  hr.m-y-2
+  form.form-inline(action='/fa17g14/search' ,name='myForm', onsubmit='return validateForm()', method='POST')
+    #search.form-group
+      .input-group
+        // drop down menu to filter search
+        .input-group-btn
+          select.form-control(required='', name='searchBy' id='searchBy')
+            option(value='', selected) Search By
+            option(value='City', selected=(searchfilter === 'City')) City
+            option(
+              value='ZipCode',
+              selected=(searchfilter === 'ZipCode')
+            ) ZIP Code
+        input#textsearch.form-control(
+          type='search', 
+          name='address' 
+          onclick='showResult()',
+          placeholder='Enter a city or ZIP code',
+          value=searchinput, 
+          maxlength='20',
+          pattern='[A-z0-9 \s]{0,}' 
+          title='Use letters from A-z or digits from 0-9'
+        )
+    button.btn.btn-primary(type='submit') Search
+  hr.m-y-1

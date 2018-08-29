@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  include search
+  .container
+    #appSummary.row
+      h1 Property Details
+ 
+    each item in listinginfo 
+      // house images
+      .row
+        .col-md-8
+          #carouselIndicators.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+              li.active(data-target='#carouselIndicators', data-slide-to='0')
+            .carousel-inner(role='listbox')
+              .carousel-item.active
+                img.img-responsive.img-center(style='height: 400px;', src='data:image/png;base64,'+ Buffer.from(item.Image).toString('base64'), alt='Property/Listing Image')
+        // map
+        .col-md-12(style='margin-bottom:10px;width:auto;height:auto;')
+          iframe.card-img-top(width='850', height='400', frameborder='0', style='border:0;', src='https://www.google.com/maps/embed/v1/place?q=' + item.City + ',' + item.AddressLine + '&key=AIzaSyA0JjF1XdRLt_UMEHjTF3ua9DtBCiBJMNw', allowfullscreen='')
+      // house details
+      br
+      .row
+        .col-md-6
+          h1.text-center Details
+          hr
+          // details start
+          .card
+            ul.list-group.list-group-flush
+              li.list-group-item
+                b Address: 
+                span= item.AddressLine + ", " + item.City + ", " + item.State + " " + item.ZipCode
+              li.list-group-item
+                b Price: 
+                span= '$' + item.Price 
+              li.list-group-item
+                b Number of Bedrooms: 
+                span= item.Bedroom
+              li.list-group-item
+                b Number of Bathrooms: 
+                span= item.Bathroom
+              li.list-group-item
+                b Date Added: 
+                span= item.DateAdded
+          // details end
+        .col-md-6
+          h1.center Realtor Information
+          hr
+          if(item.FirstName)
+            p= "Contact " + item.FirstName + " " + item.LastName
+          else
+            p= "Contact " + item.Email
+          form.form-inline(name="add-estimation", method="post")
+            if(messageConfirm)
+              .alert.alert-success.alert-dismissable.fade.in(role='alert')
+                a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                strong Success! 
+                span= messageConfirm
+            if(messageError)
+              .alert.alert-warning.alert-dismissable.fade.in(role='alert')
+                a.close(href='#', data-dismiss='alert', aria-label='close') ×
+                strong Error! 
+                span= messageError
+            div.input.form-group
+                label(for='messageToRealtor')
+                textarea.form-control(autofocus='', name='messageToRealtor', cols='40', rows='5')
+            div.actions
+                input(type='submit', value='Send')
+            //a.btn.btn-primary.bth-md(href='https://sfsuse.com/fa17g14/realtor/'+item.idRealtors) Contact Agent
+      hr.m-y-2

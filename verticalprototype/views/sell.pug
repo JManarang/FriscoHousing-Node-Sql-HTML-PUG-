@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  include search
+  #registerDisplay.container
+    .row
+      .box
+        .col-lg-12
+          h2.intro-text
+            | Set Up a House Listing
+          p
+            | An asterisk(*) indicates a required field.
+        .panel-body
+          form(role='form', method='POST')
+            .col-sm-6
+              .form-group
+                label(for='address')
+                  | Address
+                  sup *
+                input#inputAddress.form-control(type='text', placeholder='Address', name='address', autofocus='', required='', maxlength='40', pattern='[A-z0-9 \s]{0,}', title='Use letters and digits only!')
+              .form-group
+                label(for='city')
+                  | City
+                  sup *
+                input#inputCity.form-control(type='text', placeholder='City', name='city', required='', maxlength='20', pattern='[A-z0-9 \s]{0,}', title='Use letters and digits only!')
+              .form-group
+                label(for='state')
+                  | State Initals
+                  sup *
+                input#inputState.form-control(type='text', placeholder='State Initals', name='state', required='', maxlength='2', pattern='[A-Z]{2}', title='State initials require 2 capital letters!')
+              .form-group
+                label(for='zipcode')
+                  | Zipcode
+                  sup *
+                input#inputZipcode.form-control(type='text', placeholder='Zipcode', name='zipcode', required='', maxlength='5', pattern='[0-9]{5}', title='Zip codes require 5 digits!')
+              .form-group
+                label(for='bedrooms')
+                  | Amount of Bedrooms
+                  sup *
+                input#inputBedrooms.form-control(type='text', placeholder='Bedrooms', name='bedrooms', required='', maxlength='2', pattern='[0-9]{1,2}', title='Use digits only!')
+              .form-group
+                label(for='bathrooms')
+                  | Amount of Bathrooms
+                  sup *
+                input#inputBathrooms.form-control(type='text', placeholder='Bathrooms', name='bathrooms', required='', maxlength='2', pattern='[0-9]{1,2}', title='Use digits only!')
+              .form-group
+                label(for='cost')
+                  | Asking Price
+                  sup *
+                input#inputCost.form-control(type='text', placeholder='Asking Price', name='cost', required='', maxlength='9', pattern='[0-9]{1,}', title='Use digits only!')
+              .form-group
+                label(for='image')
+                  | Photo of the House
+                  sup *
+                input#inputImage.form-control(type='file', placeholder='Image', accept='image/*', name='image', required='')
+              button.btn.btn-success.pull-right(type='submit') Submit
+  // /.container

@@ -1,0 +1,104 @@
+doctype html
+html
+  head
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-110061046-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110061046-2');
+
+    // metadata
+    title= title
+    meta(charset='utf-8')
+    meta(meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    
+    // Bootstrap CSS 4.0.0-alpha.2
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css', integrity='sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd', crossorigin='anonymous')
+    // Bootstrap FontAwesome 4.5
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    // Custom CSS
+    link(rel='stylesheet', type='text/css' href='stylesheets/WebsiteStyling.css')
+    // jQuery 2.1.4
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    // Bootstrap JS 4.0.0-alpha.2
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', integrity='sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7', crossorigin='anonymous')
+    
+    // DataTables Table plug-in for jQuery
+    link(href='https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css', rel='stylesheet')
+    script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+    script(src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js')
+
+    // Custom JS
+    script(type='text/javascript', src='javascripts/interactive.js')
+    
+    // jplist core
+    script(src='javascripts/jplist.core.min.js')
+    // jplist bootstrap sort dropdown control
+    script(src='javascripts/jplist.bootstrap-sort-dropdown.min.js')
+    script.
+      $('document').ready(function(){
+        $('#demo').jplist({
+          itemsBox: '.list'
+          ,itemPath: '.list-item'
+          ,panelPath: '.jplist-panel'
+        });
+      });
+
+  body(data-spy='scroll', data-target='#navbar', data-offset='150')
+    
+    // navigation bar
+    nav#navbar.navbar.navbar-light.bg-faded.navbar-fixed-top
+      .container-fluid
+        // disclaimer
+        p(style='color:DodgerBlue; text-align:center;') SFSU Software Engineering Project, Fall 2017. For Demonstration Only.
+        // disclaimer ends
+        a.navbar-brand.col-lg-1.col-md-1.col-sm-1.col-1(href='https://sfsuse.com/fa17g14/')
+          img.image-logo(src='images/logo.jpg')
+
+
+        ul.nav.navbar-nav
+          li.nav-item
+            a.nav-link(href='https://sfsuse.com/fa17g14/agent') Agent
+          li.nav-item
+            a.nav-link(href='https://sfsuse.com/fa17g14/about') About
+          li.nav-item
+            a.nav-link(onclick='backButton()') Back 
+      
+        // dropdown button
+        style(type='text/css').
+          @font-face {
+          font-family: 'Glyphicons Halflings';
+          src: url('/fonts/glyphicons-halflings-regular.eot');
+          }
+        //- Commented if-else statement, it will indicate user login
+          if(userSession)
+            span.navbar-text= "Welcome, " + userSession
+          else
+            span.navbar-text= "Welcome, Guest"
+  
+        // dropdown button
+        #dropdown.dropdown-button
+          .btn-group.pull-right
+            button#dropdown.btn.btn-default.dropdown-toggle.pull-right(type='button', data-toggle='dropdown')
+              | My Account 
+              span.caret
+            ul.dropdown-menu(role='menu')
+              if(userSession)
+                li
+                  a(href='https://sfsuse.com/fa17g14/logout') Logout
+                li.divider
+                li
+                  a(href='#') Account Setting
+              else
+                li
+                  a(href='https://sfsuse.com/fa17g14/login') Login
+                li.divider
+                li
+                  a(href='https://sfsuse.com/fa17g14/register') Register
+
+    block content
+
+    include footer 

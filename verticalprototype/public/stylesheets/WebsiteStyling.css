@@ -1,0 +1,119 @@
+.jumbotron {
+    background-image: url('../images/background.jpg');
+    text-align: center;
+    margin-top: 30px;
+}
+
+.navbar {
+    color: #FFFFFF;
+    padding-left: 70px;
+    align-content: center; 
+    
+}
+
+/*for search bar*/
+#text {
+    width : 450px;
+    height: auto;
+}
+
+/*//styling for the "recetnly added title"*/
+#appSummary {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+#registerDisplay {
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: auto;
+}
+
+.card-img-top {
+    width: 100%;
+}
+
+#appStoreIcon {
+    width: 200px; }
+
+#footer {
+    background-color: aqua;
+    padding-top: 150px;
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 150px;
+
+    /*
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ecf0f1;
+    padding-top: 10px;
+    text-align: center;
+    */
+}
+
+body {
+    position: relative;
+}
+
+
+#dropdown {
+    background-color: cornflowerblue;
+}
+
+#dropdown:hover {
+    background-color: gray;
+}
+
+/*//padding for the nav bar menu items*/
+.nav>li>a {
+    padding: 20px;
+}
+
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+
+/* not included in original file */
+.card-deck {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+<style type="text/css">
+    @font-face {
+        font-family: 'Glyphicons Halflings';
+        src: url('/fonts/glyphicons-halflings-regular.eot');
+    }
+</style>
+
+
+

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  include search
+  if(errorMessage)
+    .container-fluid
+      .row
+        .col-md-10.col-md-offset-1
+          .alert.alert-warning.alert-dismissable.fade.in(role='alert')
+            a.close(href='#', data-dismiss='alert', aria-label='close') ×
+            strong Error! 
+            span= errorMessage
+  if listinglist.length
+    .container
+      #appSummary.row
+        h1 Recently Added Houses
+        p.lead Listings near San Francisco
+    // Show random houses/listings
+    #about.container
+      .card-deck-wrapper
+        .card-deck
+          each item in listinglist
+            .card
+              a(href='https://sfsuse.com/fa17g14/property/' + item.idListings)
+                img.card-img-top(src= 'data:image/png;base64,'+ Buffer.from(item.Thumbnail).toString('base64'), alt='Property/Listing image')
+              .card-block
+                h4.card-title
+                  i.fa.fa-home
+                    span= item.AddressLine + ", " + item.City + ", " + item.State + " " + item.ZipCode
+                i.fa.fa-money(aria-hidden='true')
+                  span.card-text= "Price: " + item.Price
+                  span= " | Beds: " + item.Bedroom
+                  span= " | Baths: " + item.Bathroom

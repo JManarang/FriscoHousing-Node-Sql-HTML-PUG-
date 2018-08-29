@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  include search
+  #registerDisplay.container
+    .row
+      .box
+        .col-lg-12
+          h2.intro-text
+            | Sign Up
+          p
+            font(color='red') You must be registered to buy or sell a house.
+          p
+            | An asterisk(*) indicates a required field.
+        .panel-body
+          form(role='form', method='POST')
+            .col-sm-6
+              .form-group
+                p#registerErrorMessage(style='color: red;')= registerErrorMessage
+                label(for='inputEmail')
+                  | Email Address
+                  sup *
+                input#inputEmail.form-control(type='email', placeholder='you@example.org', name='email', autofocus='', required='', maxlength='50', value=emailInput)
+              .form-group
+                label(for='inputPassword1')
+                  | Password
+                  sup *
+                input#inputPassword1.form-control(type='password', placeholder='********', name='password', required='', pattern='[A-z0-9 \s]{8,}', title='Minimum of 8 characters with letters from A-z and digits from 0-9')
+              .form-group
+                label(for='inputPassword2')
+                  | Confirm Password
+                  sup *
+                input#inputPassword2.form-control(type='password', placeholder='********', name='confirmpassword', required='')
+                span#matchingPasswordErrorMessage
+              .row
+                .col-sm-6
+                  .form-group
+                    label(for='inputDisplayUserType')
+                      | User Type
+                      sup *
+                    select#inputDisplayUsertype.form-control(placeholder='User Type', name='usertype', required='')
+                      option(value='') Select one
+                      option(value='Buyer') I'm a Buyer
+                      option(value='Seller') I'm a Seller
+                button.btn.btn-success.pull-right(type='submit') Submit
+  // /.container
